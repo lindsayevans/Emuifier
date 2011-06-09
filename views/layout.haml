@@ -1,0 +1,23 @@
+!!! strict
+%html{:class => 'no-js'}
+	%head
+		%meta{:charset => "utf-8"}
+		%title Emuifier - Math is hard, let's press buttons!!
+
+		%link{:rel => 'stylesheet', :href => 'css/screen.css'}
+
+		%script document.getElementsByTagName('html')[0].className='js';
+		%script //var _gaq=[['_setAccount','UA-22320439-1'],['_setDomainName', '.hasbarryofarrellfixednswyet.com'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=true;g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s);}(document,'script'));
+
+	%body
+		%div#main
+			%header{:role => 'banner'}
+				%h1
+					%a{:href => './'} Emuifier
+				%h2 Math is hard, let's press buttons!!
+		=yield
+		%footer{:role => 'contentinfo'}
+			:markdown
+				Made by [@lindsayevans](https://twitter.com/lindsayevans), 'cos .
+
+

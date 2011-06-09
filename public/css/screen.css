@@ -1,0 +1,80 @@
+
+body {
+	font: 62.5%/1.4 "Helvetica Neue",Arial,sans-serif;
+	color: #666;
+	background: #e3e3e3;
+}
+
+a:link, a:visited {
+	color: #307afd;
+}
+a:hover, a:active {
+	color: #db2fff;
+}
+
+input:focus {
+	outline-color: #307afd;
+}
+
+#main {
+	width: 49em;
+	margin: 0 auto;
+	font-size: 1.4em;
+}
+
+h1, h2 {
+	display: inline-block;
+	padding-right: 1em;
+}
+
+form > div {
+	margin-bottom: 0.75em;
+}
+
+label:after {
+	content: ":";
+}
+
+input[type="submit"] {
+	padding: 0.25em 1em;
+	border: thin solid #333;
+	border-radius: 0.5em;
+	background: #fff;
+	color: #666;
+}
+
+input[type="submit"]:hover, input[type="submit"]:active {
+	background: #666;
+	color: #e3e3e3;
+}
+
+/*
+.js input[type="submit"] {
+	display: none;
+}
+*/
+#result {
+	padding: 2em 1em;
+	border: thin solid #333;
+	border-radius: 1em;
+	font-family: Consolas,"Courier New",monospace;
+	text-align: center;
+	white-space: nowrap;
+	background: #666 url(emu.png) no-repeat 100% 100%;
+	color: #e3e3e3;
+}
+
+#result span {
+	vertical-align: middle
+}
+
+footer {
+	margin-top: 3em;
+	font-size: 0.7142857em;
+}
+
+footer p {
+	margin: 0.5em 0;
+}
+
+
