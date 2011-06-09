@@ -48,11 +48,10 @@ input[type="submit"]:hover, input[type="submit"]:active {
 	color: #e3e3e3;
 }
 
-/*
 .js input[type="submit"] {
 	display: none;
 }
-*/
+
 #result {
 	padding: 2em 1em;
 	border: thin solid #333;
