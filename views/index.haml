@@ -1,1 +1,24 @@
-%p hi!
+
+%form{ :action => ".", :role => "application"}
+	%div
+		%label{:for => "base-size"} Base font size
+		%input{:name => "base-size", :id => "base-size", :type => "number", :min => "1", :value => "10", :size => "3"}
+		%span.note px
+	%div
+		%label{:for => "element-size"} Element font size font size
+		%input{:name => "element-size", :id => "element-size", :type => "number", :min => "1", :value => "12", :size => "3", :autofocus => false}
+		%span.note px
+	%div
+		%label{:for => "result-precision"} Precision
+		%input{:name => "result-precision", :id => "result-precision", :type => "number", :min => "0", :max => "7", :value => "5", :size => "3"}
+		%span.note decimal places
+
+	%input{:type => "submit", :value => "Do it"}
+	%p#result
+		font-size:
+		%span 1.2
+		em;
+	%p{:title => "just in case you don't trust my Math() skills"}
+		Computed font-size:
+		%span#computed-result 12px
+
