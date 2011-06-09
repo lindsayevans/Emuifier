@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Emuifier - Math is hard, let's press buttons!!</title>
+
+	<!--link rel="stylesheet" media="screen,projection" href="css/screen.css"-->
+
+	<script>
+	document.getElementsByTagName('html')[0].className='js';
+	</script>
+
+	<style>
+
+	body {
+		font: 62.5%/1.4 "Helvetica Neue",Arial,sans-serif;
+		color: #666;
+		background: #e3e3e3;
+	}
+
+	a:link, a:visited {
+		color: #307afd;
+	}
+	a:hover, a:active {
+		color: #db2fff;
+	}
+
+	input:focus {
+		outline-color: #307afd;
+	}
+
+	#main {
+		width: 49em;
+		margin: 0 auto;
+		font-size: 1.4em;
+	}
+
+	h1, h2 {
+		display: inline-block;
+		padding-right: 1em;
+	}
+
+	form > div {
+		margin-bottom: 0.75em;
+	}
+
+	label:after {
+		content: ":";
+	}
+
+	input[type="submit"] {
+		padding: 0.25em 1em;
+		border: thin solid #333;
+		border-radius: 0.5em;
+		background: #fff;
+		color: #666;
+	}
+
+	input[type="submit"]:hover, input[type="submit"]:active {
+		background: #666;
+		color: #e3e3e3;
+	}
+
+/*
+	.js input[type="submit"] {
+		display: none;
+	}
+*/
+	#result {
+		padding: 2em 1em;
+		border: thin solid #333;
+		border-radius: 1em;
+		font-family: Consolas,"Courier New",monospace;
+		text-align: center;
+		white-space: nowrap;
+		background: #666 url(emu.png) no-repeat 100% 100%;
+		color: #e3e3e3;
+	}
+
+	#result span {
+		vertical-align: middle
+	}
+
+	footer {
+		margin-top: 3em;
+		font-size: 0.7142857em;
+	}
+
+	footer p {
+		margin: 0.5em 0;
+	}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="main">
+		<header role="banner">
+			<h1><a href="./">Emuifier</a></h1>
+			<h2>Math is hard, let's press buttons!!</h2>
+		</header>
+		<form action="." role="application">
+			<div>
+				<label for="base-size">Base font size</label>
+				<input name="base-size" id="base-size" type="number" min="1" value="10" size="3">
+				<span class="note">px</span>
+			</div>
+			<div>
+				<label for="element-size">Element font size font size</label>
+				<input name="element-size" id="element-size" type="number" min="1" value="12" size="3" autofocus>
+				<span class="note">px</span>
+			</div>
+			<div>
+				<label for="result-precision">Precision</label>
+				<input name="result-precision" id="result-precision" type="number" min="0" max="7" size="3" value="5">
+				<span class="note">decimal places</span>
+			</div>
+			<input type="submit" value="Do it">
+			<p id="result">font-size: <span>1.2</span>em;</p>
+			<p title="just in case you don't trust my Math() skills">Computed font-size: <span id="computed-result">12px</span></p>
+		</form>
+
+		<footer role="contentinfo">
+			<p>Made by <a href="http://twitter.com/lindsayevans">@lindsayevans</a>, 'cos he was sick of using his noggin.</p>
+			<p>Emu image: <a href="http://www.flickr.com/photos/fernando/2474598581/in/photostream/">Emu</a> by <a href="http://www.flickr.com/photos/fernando/">Looking Glass</a></p>
+		</footer>
+
+	</div>
+
+	<script src="//jscdn.net/jquery.js"></script>
+	<script>
+
+	$('input[type="number"]').bind('now keyup click', function(e){
+
+		var base_size = parseInt($('#base-size').val(), 10),
+				element_size = parseInt($('#element-size').val(), 10),
+				precision = parseInt($('#result-precision').val(), 10)
+		;
+
+		if(e.type !== 'now'){
+			window.history.pushState(
+				{base_size: base_size, element_size: element_size, precision: precision},
+				'',
+				'?base-size=' + base_size + '&element-size=' + element_size + '&result-precision=' + precision
+			);
+		}
+
+		calculate_size(base_size, element_size, precision);
+
+	}).filter(':last').trigger('now');
+
+	function calculate_size(base_size, element_size, precision){
+
+		var em_size = parseFloat((100 / base_size * element_size / 100).toFixed(precision));
+
+		$('#result')
+			.css({fontSize: base_size})
+			.find('span')
+			.css({fontSize: em_size + 'em'})
+			.text(em_size)
+		;
+
+		$('#computed-result').text(getComputedStyle($('#result span')[0]).fontSize);
+
+	}
+
+	function history_change(e){
+
+		if(event.state == null){
+			return false;
+		}
+
+		$('#base-size').attr('value', e.state.base_size);
+		$('#element-size').attr('value', e.state.element_size);
+		$('#result-precision').attr('value', e.state.precision);
+
+		calculate_size(e.state.base_size, e.state.element_size, e.state.precision);
+
+	}
+
+	window.onpopstate = history_change;
+
+
+	</script>
+
+</body>
+</html>
+
