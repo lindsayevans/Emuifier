@@ -59,7 +59,7 @@ input[type="submit"]:hover, input[type="submit"]:active {
 	font-family: Consolas,"Courier New",monospace;
 	text-align: center;
 	white-space: nowrap;
-	background: #666 url(emu.png) no-repeat 100% 100%;
+	background: #666 url(../emu.png) no-repeat 100% 100%;
 	color: #e3e3e3;
 }
 
