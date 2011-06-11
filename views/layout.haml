@@ -12,14 +12,13 @@
 	%body
 		%div#main
 			%header{:role => 'banner'}
-				%h1
+				%h1<
 					%a{:href => './'} Emuifier
 				%h2 Math is hard, let's press buttons!!
 			=yield
 			%footer{:role => 'contentinfo'}
 				:markdown
-					Made by [@lindsayevans](https://twitter.com/lindsayevans), 'cos he was sick of using his noggin.
-
+					Made by [@lindsayevans](https://twitter.com/lindsayevans), 'cos he was sick of using his noggin.<br>
 					Emu image: [Emu](http://www.flickr.com/photos/fernando/2474598581/in/photostream/) by [Looking Glass](http://www.flickr.com/photos/fernando/)
 
 		%script{:src => "//jscdn.net/jquery.js"}
